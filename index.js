@@ -1,39 +1,25 @@
-Object.freeze(Object)
-Object.freeze(Object.prototype)
-Object.freeze(global)
-const thirdPartyFunction = require('./third-party-package/index.js').default;
+import "ses"
+lockdown()
 
+import('./third-party-package/index.js').then((thirdPartyFunction) => {
+    const data = harden({
+        name: {
+            firstName: 'Rasmus',
+            lastName: 'Rimestad',
+        },
+    });
 
-const data = {
-    name: {
-        firstName: 'Rasmus',
-        lastName: 'Rimestad',
-    },
-};
-
-deepFreeze(data);
-
-thirdPartyFunction(data);
-
-if(data.name.firstName !== 'Rasmus' && data.name.lastName !== "Rimestad") {
-    throw new Error('Data has been mutated!');
-} else {
-    console.log('Data is intact.');
-}
-
-function deepFreeze(object) {
-    // Retrieve the property names defined on object
-    const propNames = Reflect.ownKeys(object);
-
-    // Freeze properties before freezing self
-    for (const name of propNames) {
-        const value = object[name];
-
-        if ((value && typeof value === 'object') || typeof value === 'function') {
-            deepFreeze(value);
-        }
+    try {
+        thirdPartyFunction.default(data);
+    } catch(error) {
+        console.error(error);
     }
 
-    return Object.freeze(object);
-}
+    if(data.name.firstName !== 'Rasmus' || data.name.lastName !== "Rimestad") {
+        throw new Error('\x1b[41m Data has been mutated!');
+    } else {
+        console.log('\x1b[32m Data is intact.');
+    }
 
+    console.log("\x1b[0m")
+});

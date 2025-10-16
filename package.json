@@ -1,0 +1,24 @@
+{
+  "name": "mutation-experiment",
+  "version": "1.0.0",
+  "description": "An experiment to test whether it's possible to make an object truly immutable, even when a third-party package attempts to circumvent protection mechanisms.",
+  "homepage": "https://github.com/rasmusrim/mutation-experiment#readme",
+  "bugs": {
+    "url": "https://github.com/rasmusrim/mutation-experiment/issues"
+  },
+
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rasmusrim/mutation-experiment.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "ses": "^1.14.0"
+  }
+}
