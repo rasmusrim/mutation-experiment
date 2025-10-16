@@ -1,5 +1,6 @@
 Object.freeze(Object)
 Object.freeze(Object.prototype)
+Object.freeze(global)
 const thirdPartyFunction = require('./third-party-package/index.js').default;
 
 
