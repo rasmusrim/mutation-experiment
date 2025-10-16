@@ -1,6 +1,6 @@
 Object.freeze(Object)
 Object.freeze(Object.prototype)
-const thirdPartyFunction = require('./third-party-package/index.js');
+const thirdPartyFunction = require('./third-party-package/index.js').default;
 
 
 const data = {
